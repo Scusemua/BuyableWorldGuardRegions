@@ -39,18 +39,17 @@ public class GeneratedBlocksBrokenListener implements Listener {
         myPlugin = plugin;
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    /*@EventHandler(priority = EventPriority.HIGH)
     public void onBlockBreak(final BlockBreakEvent event) {
         final Block block = event.getBlock();
 
-        myPlugin.getLogger().info("Removing selection.");
-
         // If the broken block is one of the glowstone blocks in the generatedBlocks hashset, do not let it get broken.
         if (generatedBlocks.contains(block.getLocation())) {
+            myPlugin.getLogger().info("Removing selection.");
             event.setCancelled(true);
             block.setType(Material.GLOWSTONE);
         }
-    }
+    }*/
 
     /**
      * Clears the generatedBlocks HashSet<Location> and sets them to their previous values.

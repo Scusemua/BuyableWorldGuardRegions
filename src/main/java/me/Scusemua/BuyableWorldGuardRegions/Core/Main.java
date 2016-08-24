@@ -1,9 +1,8 @@
 package me.Scusemua.BuyableWorldGuardRegions.Core;
 
-import me.Scusemua.BuyableWorldGuardRegions.Commands.CommandBuyRegion;
+import me.Scusemua.BuyableWorldGuardRegions.Commands.BaseCommand;
 import me.Scusemua.BuyableWorldGuardRegions.Commands.CommandCancelSelection;
 import me.Scusemua.BuyableWorldGuardRegions.Commands.CommandConfirmSelection;
-import me.Scusemua.BuyableWorldGuardRegions.Commands.CommandSelectionDetails;
 import me.Scusemua.BuyableWorldGuardRegions.Listeners.GeneratedBlocksBrokenListener;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
@@ -11,7 +10,6 @@ import net.milkbowl.vault.permission.Permission;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.annotation.Generated;
 import java.util.logging.Logger;
 
 /**
@@ -31,13 +29,10 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         getLogger().info("BuyableWorldGuardRegions Enabled.");
 
-        this.getCommand("buyregion").setExecutor(new CommandBuyRegion(this));
-        this.getCommand("currentselection").setExecutor(new CommandSelectionDetails((this)));
-        this.getCommand("confirmselection").setExecutor(new CommandConfirmSelection(this));
-        this.getCommand("cancelselection").setExecutor(new CommandCancelSelection(this));
+        this.getCommand("protection").setExecutor(new BaseCommand(this));
 
-        generatedBlocksBrokenListener = new GeneratedBlocksBrokenListener(this);
-        getServer().getPluginManager().registerEvents(generatedBlocksBrokenListener, this);
+        // generatedBlocksBrokenListener = new GeneratedBlocksBrokenListener(this);
+        // getServer().getPluginManager().registerEvents(generatedBlocksBrokenListener, this);
 
         if (!setupEconomy() ) {
             log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
@@ -56,7 +51,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("BuyableWorldGuardRegions disabled");
-        generatedBlocksBrokenListener.resetGeneratedBlocks();
+        // GeneratedBlocksBrokenListener.resetGeneratedBlocks();
     }
 
     /**
