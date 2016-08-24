@@ -1,0 +1,26 @@
+name: BuyableWorldGuardRegions
+version: 1.0.0
+author: Scusemua
+main: me.Scusemua.BuyableWorldGuardRegions.Core.Main
+depend: [WorldEdit, WorldGuard, Vault]
+commands:
+  buyregion:
+    description: Attempts to purchase the current selection.
+    usage: /<command>
+    aliases: [buyselection, buycurrentselection, buycurrentregion, buyreg, buysel, buycurrentsel, buycurrentreg]
+    permissions: BuyableWorldGuardRegions.buyregion
+  currentselection:
+    description: Displays information about the current selection.
+    usage: /<command>
+    aliases: [currentregion, curreg, cursel, curretnsel, currentreg]
+    permissions: BuyableWorldGuardRegions.currentselection
+  confirmselection:
+    description: Confirms the current selection is what the player wants.
+    usage: /<command>
+    aliases: [confirmregion, confirmreg, confirmsel]
+    permissions: BuyableWorldGuardRegions.confirmselection
+  cancelselection:
+    description: Cancels the current selection, returning proper blocks to locations of generated glowstone and all.
+    usage: /<command>
+    aliases: [cancelregion, cancelreg, cancelsel]
+    permissions: BuyableWorldGuardRegions.cancelselection
