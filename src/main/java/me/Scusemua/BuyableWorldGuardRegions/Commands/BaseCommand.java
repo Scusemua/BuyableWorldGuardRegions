@@ -77,7 +77,7 @@ public class BaseCommand implements CommandExecutor {
         // Ensure the player has permission to execute the command.
         if (!Main.perms.has(player, "BuyableWorldGuardRegions.buyregion")) {
             player.sendMessage(ChatColor.RED + "ERROR: You do not have permission to do this.");
-            return false;
+            return true;
         }
 
         // Create instances to both the WorldEdit and WorldGuard plugins.
@@ -90,7 +90,7 @@ public class BaseCommand implements CommandExecutor {
         // If the player has not made a selection, inform the player and return false.
         if (selection == null) {
             player.sendMessage(ChatColor.RED + "ERROR: Please select a region first.");
-            return false;
+            return true;
         }
 
         // Create a reference to the current World of the selection.
@@ -109,7 +109,7 @@ public class BaseCommand implements CommandExecutor {
             // If the current region is null, inform the player and return false.
             if (regionSelector.getRegion() == null) {
                 player.sendMessage(ChatColor.RED + "ERROR: Please select a region first.");
-                return false;
+                return true;
             }
             // Create a reference to the currently selected region.
             Region region = regionSelector.getRegion();
@@ -177,7 +177,7 @@ public class BaseCommand implements CommandExecutor {
                 // Main.generatedBlocksBrokenListener.removeSelection(selection);
             } else {    // If the player did not have enough money, notify them and return.
                 player.sendMessage(String.format("An error occurred: %s", r.errorMessage));
-                return false;
+                return true;
             }
             return true;
 
@@ -185,12 +185,12 @@ public class BaseCommand implements CommandExecutor {
             player.sendMessage(ChatColor.DARK_RED + "ERROR: An unexpected error as occurred. "
                     + "Please inform a staff member.");
             e.printStackTrace();
-            return false;
+            return true;
         } catch (RegionOperationException e) {
             player.sendMessage(ChatColor.DARK_RED + "ERROR: An unexpected error as occurred. "
                     + "Please inform a staff member.");
             e.printStackTrace();
-            return false;
+            return true;
         }
     }
 
